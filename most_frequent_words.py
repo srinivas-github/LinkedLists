@@ -25,6 +25,36 @@ def main():
 main()
 
 
+///////////////////////////////////////////////////////////
+#!/usr/bin/env python
+
+def most_freq_words(path, k):
+    words = open(path).read().lower().split()
+    uniques = []
+    for word in words:
+        if word not in uniques:
+            uniques.append(word)
+
+    counts = []
+    for unique in uniques:
+        count = 0
+        for word in words:
+            if word == unique:
+                count += 1
+        counts.append((count, unique))
+    counts.sort()
+    counts.reverse()
+    for i in range(min(k, len(counts))):
+        count,word = counts[i]
+        print('%s %d' % (word, count))
+
+def main():
+    most_freq_words("books.txt", 4)
+
+main()
+///////////////////////////////////////////////
+
+
 
 #!/usr/bin/env python
 def word_occurences(Myfile, count):
